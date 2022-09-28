@@ -2,23 +2,16 @@ import java.io.*;
 public class Main {
 
    public static void main(String args[]) {
-      // String Str = new String("Welcome to Tutorialspoint.com");
+      // String s = "abc,def:ghi";
+      // String[] words = s.split("[,:]");
 
-      // System.out.print("Return Value :" );
-      // System.out.println(Str.matches("(.*)Tutorials(.*)"));
+      // for (String w : words) {
+      //    System.out.print(w + "->");
+      // }
 
-      // System.out.print("Return Value :" );
-      // System.out.println(Str.matches("Tutorials"));
+      String s = "abc,def:ghi";
+      String w = s.replaceAll("[beh]","X");
+      System.out.println(w);
 
-      // System.out.print("Return Value :" );
-      // System.out.println(Str.matches("Welcome(.*)"));
-
-      public boolean isValidPlayerName(String name) {
-         return name.matches("[A-Z][A-Z0-9]{7}");
-      }
-
-      String str = new String("Vanthong")
-;
-      System.out.println(isValidPlayerName(str));
    }
 }
