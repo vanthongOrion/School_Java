@@ -2,6 +2,7 @@ public class PrefsMain {
 	public static void main(String[] args) {
 		ReadPrefsFile read = new ReadPrefsFile();
 
-		read.
+		ArrayList<Prefs> readList = read.readPrefs();
+		System.out.println(readList);
 	}
 }
