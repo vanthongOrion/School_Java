@@ -82,6 +82,8 @@ Step1 : download connect jar file
 Step2 : setup by command
 	$ javac -d bin -sourcepath src -cp /Users/nguyenvanthong/programing/java/lib/mysql-connector-java-8.0.12.jar Test2.java
 	$ java -cp bin:/Users/nguyenvanthong/programing/java/lib/mysql-connector-java-8.0.12.jar Test2
+	$ javac -classpath /Users/nguyenvanthong/Programing/Java/lib/jdbc.jar: Test2.java
+	$ java -classpath /Users/nguyenvanthong/Programing/Java/lib/jdbc.jar: Test2
 
 
 
