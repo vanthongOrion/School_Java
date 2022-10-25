@@ -19,7 +19,7 @@ public class Prefs {
 	}
 
 	public String getCode() {
-		return this.code;
+		return this.code;		
 	}
 
 	public void setCode(String code) {
@@ -60,7 +60,7 @@ public class Prefs {
 
 	@Override
 	public String toString() {
-		return "[Code=" + this.getCode() +",PrefsName=" + this.getPrefName + ",PrefCapital=" + this.getPrefCapital + ",Region=" + this.getRegion() + ",Area=" + this.getArea() + "]";
+		return "[Code=" + this.getCode() +",PrefsName=" + this.getPrefName() + ",PrefCapital=" + this.getPrefCapital() + ",Region=" + this.getRegion() + ",Area=" + this.getArea() + "]";
 	}
 
 

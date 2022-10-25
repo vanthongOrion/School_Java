@@ -1,7 +1,5 @@
-import java.io.BufferedReader;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
+import java.util.*;
+import java.io.*;
 
 
 public class ReadPrefsFile {
@@ -9,36 +7,36 @@ public class ReadPrefsFile {
 		readPrefs();
 	}
 	public static ArrayList<Prefs> readPrefs() {
-		List<Prefs> pr = new ArrayList<>();
-			FileReader reader;
+
+		ArrayList<Prefs> pr = new ArrayList<Prefs>();
+		FileReader read;
+		String line = "";
+
 		try {
-			reader = new FileReader("prefs.csv");
-			BufferedReader buffer = new BufferedReader(reader);
-		}
+			read = new FileReader("prefs.csv");
+			BufferedReader buffer = new BufferedReader(read);
 
-		try(FileReader reader = new FileReader("prefs.csv");
-			BufferedReader buffer = new BufferedReader(reader);
-			String line = "";
-			){
-			// while (true) {
-			// 	try {
-			// 		line = buffer.readLine();
+			while(true){
+				try {
+					line = buffer.readLine();
 
-			// 	}catch (IOException e){
-			// 		e.printStackTrace();
-			// 	}
-			// 	if (line == null ){
-			// 		break;
-			// 	}
-			// 	String[] str = line.split(",");
-
-			// 	pr.add(new Prefs(str[0],str[1],str[2],str[3],Integer.parseInt(4)));
-				// return pr;
+				}catch (IOException e){
+					e.printStackTrace();
+				}
+				if (line==null){
+					break;
+				}
+				String[] arrOfStr = line.split(",");
+				pr.add(new Prefs(arrOfStr[0],arrOfStr[1],arrOfStr[2],arrOfStr[3],Integer.parseInt(arrOfStr[4])));
 			}
-			
-		}catch (IOException e) {
+
+			return pr;
+		}catch (Exception e) {
 			e.printStackTrace();
-		}
 			return null;
+		}
+
 	
+	}
+
 }
