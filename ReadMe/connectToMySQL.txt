@@ -64,9 +64,17 @@ public class GFG {
 
 //Start Mysql server on mac
 
-shell> sudo /usr/local/mysql/bin/mysqld_safe
-(Enter your password, if necessary)
-(Press Control-Z)
-shell> bg
-(Press Control-D or enter "exit" to exit the shell)
+	shell> sudo /usr/local/mysql/bin/mysqld_safe
+	(Enter your password, if necessary)
+	(Press Control-Z)
+	shell> bg
+	(Press Control-D or enter "exit" to exit the shell)
+
+
+	You can also add these to your bash startup scripts:
+
+	export MYSQL_HOME=/usr/local/mysql
+	alias start_mysql='sudo $MYSQL_HOME/bin/mysqld_safe &'
+	alias stop_mysql='sudo $MYSQL_HOME/bin/mysqladmin shutdown'
+
 
