@@ -1,5 +1,6 @@
 //upstream
-
+//see log
+$ git log
 
 //fetch
 $ git fetch upstream
