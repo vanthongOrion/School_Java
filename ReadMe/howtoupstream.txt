@@ -10,6 +10,9 @@ remote: Total 7 (delta 1), reused 7 (delta 1), pack-reused 0
 Unpacking objects: 100% (7/7), 1.83 KiB | 5.00 KiB/s, done.
 From https://github.com/vanthongOrion/School_Java
    679bff1..655b32f  main       -> upstream/main
+   
+//update
+$ git pull
 
 $ git checkout main
 > Switched to branch 'main'
