@@ -61,3 +61,12 @@ public class GFG {
 	} // function ends
 } // class ends
 
+
+//Start Mysql server on mac
+
+shell> sudo /usr/local/mysql/bin/mysqld_safe
+(Enter your password, if necessary)
+(Press Control-Z)
+shell> bg
+(Press Control-D or enter "exit" to exit the shell)
+
