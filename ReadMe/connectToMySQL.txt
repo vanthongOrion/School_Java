@@ -83,3 +83,11 @@ Step2 : setup by command
 	$ javac -d bin -sourcepath src -cp /Users/nguyenvanthong/programing/java/lib/mysql-connector-java-8.0.12.jar Test2.java
 	$ java -cp bin:/Users/nguyenvanthong/programing/java/lib/mysql-connector-java-8.0.12.jar Test2
 
+
+
+
+** Warning about SSL connection when connecting to MySQL database
+ Solution :
+  	Your connection URL should look like the below,
+	jdbc:mysql://localhost:3306/database?autoReconnect=true&useSSL=false
+	This will disable SSL and also suppress the SSL errors.
