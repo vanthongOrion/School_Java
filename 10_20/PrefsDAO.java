@@ -75,7 +75,7 @@ public class PrefsDAO {
 	// 	}
 	// }
 
-		public ResultSet selectAllFrom(String nameOfTable) {
+	public ResultSet selectAllFrom(String nameOfTable) {
 		ResultSet rs;
 		try{
 			con = DriverManager.getConnection(url,"root","");
@@ -88,5 +88,26 @@ public class PrefsDAO {
 			return null;
 		}
 	}
+
+	public ResultSet selectFromSuffix(String tableName, String columnName, String s) {
+		try {
+			con = DriverManager.getConnection(url,"root","");
+			String query = String.format("SELECT * FROM %1$s WHERE %2$s LIKE %3$s;",tableName,columnName,quote(s));
+			st = con.createStatement();
+			return rs = st.executeQuery(query);
+		}catch (SQLException e){
+			e.printStackTrace();
+			return null;
+		}
+	}
+
+	public static String quote(String s) {
+	    return new StringBuilder()
+	        .append('\'')
+	        .append(s)
+	        .append('\'')
+	        .toString();
+	}
+
 
 }

@@ -25,6 +25,9 @@ public class PrefsMain {
 		ResultSet rs = dao.selectAllFrom("prefs");
 		// DBTablePrinter dbPrinter;
 		DBTablePrinter.printResultSet(rs);
+
+		ResultSet rs2 = dao.selectFromSuffix("prefs","PrefName","%島");
+		DBTablePrinter.printResultSet(rs2);
 	
 
 	}
