@@ -1,0 +1,63 @@
+How To conect java database with mySQL
+
+Step 1 : download mysql-connector-java-8.0.30.jar
+Step 2 : Set up folder for connector
+        1. mkdir lib
+	2. copy connector to lib
+Step 3 : Write connectivity code in the src folder :
+       //Diver class : The driver class for connectivity of MySQL database “com.mysql.cj.jdbc.Driver”, 
+       after the driver has been registered, we can obtain a Connection instance that is connected to 
+       a particular database by calling DriverManager.getConnection():, in this method,
+        we need to pass URL for connection and name and password of the database.
+	//Code : Class.forName("com.mysql.cj.jdbc.Driver");
+	
+	//URL for Connection : The connection URL for the mysql database is
+               "jdbc:mysql://localhost:3306/mydb" (‘mydb’ is the name of database).
+	//Code : Connection connection=DriverManager.getConnection("URL in string","username","password");
+
+Step4:　compile “javac -classpath ..\lib\mysql-connector-java-8.0.20.jar;. Check.java“
+        And “java -classpath ..\lib\mysql-connector-java-8.0.20.jar;. Check“
+      
+ 
+Ｎｏｔｅ： Full Code:
+
+import java.sql.*;
+
+public class GFG {
+	public static void main(String arg[])
+	{
+		Connection connection = null;
+		try {
+			// below two lines are used for connectivity.
+			Class.forName("com.mysql.cj.jdbc.Driver");
+			connection = DriverManager.getConnection(
+				"jdbc:mysql://localhost:3306/mydb",
+				"mydbuser", "mydbuser");
+
+			// mydb is database
+			// mydbuser is name of database
+			// mydbuser is password of database
+
+			Statement statement;
+			statement = connection.createStatement();
+			ResultSet resultSet;
+			resultSet = statement.executeQuery(
+				"select * from designation");
+			int code;
+			String title;
+			while (resultSet.next()) {
+				code = resultSet.getInt("code");
+				title = resultSet.getString("title").trim();
+				System.out.println("Code : " + code
+								+ " Title : " + title);
+			}
+			resultSet.close();
+			statement.close();
+			connection.close();
+		}
+		catch (Exception exception) {
+			System.out.println(exception);
+		}
+	} // function ends
+} // class ends
+

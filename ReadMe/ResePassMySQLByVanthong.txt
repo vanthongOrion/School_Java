@@ -1,0 +1,33 @@
+
+//stop MySql Service
+sc stop MYSQL80
+
+//direct pass to c drive
+cd c:
+
+//add file txt to c drive
+echo ALTER USER 'root'@'localhost' IDENTIFIED BY 'root'; >mysql-init.txt
+
+//driect pass to bin folder
+cd "C:\Program Files\MySQL\MySQL Server 8.0\bin"
+
+//init mysql by new password
+mysqld --init-file=C:\\mysql-init.txt
+
+mysqld --defaults-file="C:\\ProgramData\\MySQL\\MySQL Server 8.0\\my.ini"  --init-file=C:\\mysql-init.txt
+
+//exit cmd
+exit
+
+//start service
+sc start MYSQL80
+
+//direct to bin file
+cd c:\Program Files\MySQL\MySQL Server 8.0\bin
+
+//start mysql
+mysql -u root -p
+
+
+test ok . by van thong
+

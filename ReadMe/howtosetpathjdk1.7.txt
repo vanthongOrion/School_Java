@@ -1,0 +1,22 @@
+how to set path environment variable (javac,..) in jdk1.7
+
+To set the PATH variable permanently, add the full path of the jdk1.7.0\bin directory to the PATH variable. Typically, this full path looks something like C:\Program Files\Java\jdk1.7.0\bin. Set the PATH variable as follows on Microsoft Windows:
+
+1.Click Start, then Control Panel, then System.
+
+2.Click Advanced, then Environment Variables.
+
+3.Add the location of the bin folder of the JDK installation for the PATH variable in System Variables. The following is a typical value for the PATH variable:
+
+C:\WINDOWS\system32;C:\WINDOWS;C:\Program Files\Java\jdk1.7.0\bin
+Note:
+
+The PATH environment variable is a series of directories separated by semicolons (;) and is not case-sensitive. Microsoft Windows looks for programs in the PATH directories in order, from left to right.
+You should only have one bin directory for a JDK in the path at a time. Those following the first instance are ignored.
+If you are not sure where to add the path, add it to the right of the value of the PATH variable.
+The new path takes effect in each new command window you open after setting the PATH variable.
+
+
+How to set encoding to utf 8
+
+goto edit environment variable >>  JAVA_TOOL_OPTIONS = -Dfile.encoding=UTF8

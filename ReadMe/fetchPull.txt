@@ -1,0 +1,26 @@
+how to fetch and pull
+
+Prepare : Author identity 
+
+$  git config --global user.email "you@example.com"
+$  git config --global user.name "Your Name"
+
+//Step 1 : fetch
+$ git fetch
+
+//Step 2 : pull 
+$ git pull
+
+//Step 3 : push
+$ git push -u origin main
+
+
+Delete the most recent commit, keeping the work you've done:
+$ git reset --soft HEAD~1
+
+Delete the most recent commit, destroying the work you've done:
+$ git reset --hard HEAD~1
+
+$ git show-ref
+
+$ git push -u origin HEAD:main

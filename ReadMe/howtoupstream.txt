@@ -1,0 +1,27 @@
+//upstream
+
+
+//fetch
+$ git fetch upstream
+remote: Enumerating objects: 8, done.
+remote: Counting objects: 100% (8/8), done.
+remote: Compressing objects: 100% (6/6), done.
+remote: Total 7 (delta 1), reused 7 (delta 1), pack-reused 0
+Unpacking objects: 100% (7/7), 1.83 KiB | 5.00 KiB/s, done.
+From https://github.com/vanthongOrion/School_Java
+   679bff1..655b32f  main       -> upstream/main
+
+$ git checkout main
+> Switched to branch 'main'
+
+//Merge the changes from the upstream default branch - in this case, upstream/main - into your local default branch. This brings your fork's default branch into sync with the upstream repository, without losing your local changes.
+
+$ git merge upstream/main
+> Updating a422352..5fdff0f
+> Fast-forward
+>  README                    |    9 -------
+>  README.md                 |    7 ++++++
+>  2 files changed, 7 insertions(+), 9 deletions(-)
+>  delete mode 100644 README
+>  create mode 100644 README.md
+

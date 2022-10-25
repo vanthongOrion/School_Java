@@ -1,0 +1,54 @@
+**how to install mysql without admin rights//test by vanthong
+
+Step1 : download mysql community server from https://dev.mysql.com/downloads/mysql/   
+       download Windows (x86, 64-bit), ZIP Archive
+Step2 : Set up folder for MySQL
+     1. cd c
+ 	mkdir mysql
+	
+     2. Extract downloaded MySQL folder into C:\mysql.
+       copy inner “mysql-8.0.29-winx64” folder to C:\mysql. 	
+     3.Create 2 more empty folders in C:\mysql:
+    	1.mysqldata – You can name it anything, but this folder will be used to store all the MySQL data
+    	2.logs – Again you can name anything, but we will keep logs in here.
+
+Step3 : Create my.ini file to install MySQL
+	create my.ini file in C:/mysql/mysql-8.0.29-winx64.
+	//code:
+	[mysqld]
+	basedir = "C:/mysql/mysql-8.0.29-winx64"
+	datadir = "C:/mysql/mysqldata"
+	tmpdir="C:/mysql/logs"
+	log-error = "C:/mysql/logs/mysql-server-1.log"
+	#port = "5544"
+	//
+Step 4 : Run mysqld (MySQL SerVer)
+        1. Open CMD, and change directory to C:\mysql\mysql-8.0.29-winx64\bin
+        2. Run mysqld --initialize-insecure --user=root
+        3.Now run mysqld
+
+      Note:
+
+      Last command – mysqld will not return cursor back and it means server is running.
+      We have said --initialize-insecure as we are not using password.
+      If you want to set password, then run below command instead:
+
+       //mysqld --initialize --user=root --console
+
+Step 5 : Run MySQL
+	mysql -u root
+
+	If you set password then run 
+	//mysql -u root -p and then it will prompt you password.
+
+Note: Change Password
+	
+MySQL 5.7.6 and later :
+   ALTER USER 'root'@'localhost' IDENTIFIED BY 'your_password';
+ 
+MySQL 5.7.5 and earlier :
+	SET PASSWORD FOR 'root'@'localhost' = PASSWORD('NEW_USER_PASSWORD');
+	FLUSH PRIVILEGES;
+
+	
+	
