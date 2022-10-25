@@ -76,5 +76,10 @@ public class GFG {
 	export MYSQL_HOME=/usr/local/mysql
 	alias start_mysql='sudo $MYSQL_HOME/bin/mysqld_safe &'
 	alias stop_mysql='sudo $MYSQL_HOME/bin/mysqladmin shutdown'
+//Conect java with mysql on mac
 
+Step1 : download connect jar file
+Step2 : setup by command
+	$ javac -d bin -sourcepath src -cp /Users/nguyenvanthong/programing/java/lib/mysql-connector-java-8.0.12.jar Test2.java
+	$ java -cp bin:/Users/nguyenvanthong/programing/java/lib/mysql-connector-java-8.0.12.jar Test2
 
