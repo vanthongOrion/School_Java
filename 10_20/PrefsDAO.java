@@ -10,8 +10,10 @@ public class PrefsDAO {
 			e.printStackTrace();
 		}
 	}
-
-		String url = "jdbc:mysql://localhost:3306/newDB";
+		//for mac use SSL false
+		String url = "jdbc:mysql://localhost:3306/newDB?autoReconnect=true&useSSL=false";
+		// for windows
+		// String url = "jdbc:mysql://localhost:3306/newDB";
 		Connection con = null;
 		PreparedStatement prst;
 		Statement st;
@@ -21,7 +23,7 @@ public class PrefsDAO {
 		int count = 0;
 
 		try {
-			con = DriverManager.getConnection(url,"root","");
+			con = DriverManager.getConnection(url,"root","root");
 			String query = "Insert into Prefs values(?,?,?,?,?)";
 			
 			for(Prefs pr: prefs) {
@@ -48,7 +50,7 @@ public class PrefsDAO {
 
 	public int clearTable(String nameOfTable) {
 		try{
-			con = DriverManager.getConnection(url,"root","");
+			con = DriverManager.getConnection(url,"root","root");
 			String query = "DELETE FROM " + nameOfTable;
 			st = con.createStatement();
 			return st.executeUpdate(query);
@@ -78,7 +80,7 @@ public class PrefsDAO {
 	public ResultSet selectAllFrom(String nameOfTable) {
 		ResultSet rs;
 		try{
-			con = DriverManager.getConnection(url,"root","");
+			con = DriverManager.getConnection(url,"root","root");
 			String query = "SELECT * FROM " + nameOfTable;
 			st = con.createStatement();
 			return rs = st.executeQuery(query);
@@ -91,7 +93,7 @@ public class PrefsDAO {
 
 	public ResultSet selectFromSuffix(String tableName, String columnName, String s) {
 		try {
-			con = DriverManager.getConnection(url,"root","");
+			con = DriverManager.getConnection(url,"root","root");
 			String query = String.format("SELECT * FROM %1$s WHERE %2$s LIKE %3$s;",tableName,columnName,quote(s));
 			st = con.createStatement();
 			return rs = st.executeQuery(query);
