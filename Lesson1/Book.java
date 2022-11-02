@@ -3,7 +3,7 @@ package mondai;
 
 import java.util.*;
 
-public class Book {
+public class Book implements Cloneable{
 	private String title;
 	private Date publishDate;
 	private String comment;
@@ -24,12 +24,23 @@ public class Book {
 		if (!(o instanceof Book)) return false;
 		Book b = (Book) o;
 		if (!this.getTitle().trim().equals(b.getTitle().trim())){
-			if((this.getPublishDate().compareTo(b.getPublishDate())) != 0){
-				return false;
-			}
+			return false;
+		}
+		if (this.getPublishDate().compareTo(b.getPublishDate())!=0){
+			return false;
 		}
 		return true;
 	}
+
+	@Override
+	public Book clone(){
+		Book b = new Book();
+		b.setTitle(this.getTitle());
+		b.setPublishDate(this.getPublishDate());
+		b.setComment(this.getComment());
+		return b;
+	}
+
 
 	public void setTitle(String title){
 		this.title = title;
@@ -50,4 +61,15 @@ public class Book {
 	public void setComment(String comment){
 		this.comment = comment;
 	}
+
+	public String getComment(){
+		return this.comment;
+	}
+
+	@Override
+	public String toString(){
+		return "Book={title=" + this.getTitle() + ",publishDate=" + 
+		this.getPublishDate() + ",comment=" + this.getComment() + "}";
+	}
 }
+
