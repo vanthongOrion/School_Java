@@ -1,0 +1,19 @@
+//How to create package
+
+Step 1 : To put a class into a package, at the first line of code define package p1
+Step 2 : Compile the file
+	javac demo.java
+Step 3 : Create a package : 
+	$ javac -d . demo.java
+Step 4 : Compile the same file:
+	$ javac -d .. demo.java
+
+Step 5 : Now let’s say you want to create a sub package p2 within our existing java package p1. 
+	Then we will modify our code as
+
+	//package p1.p2;
+Step 6 : Compile the file:
+ 	$ javac -d . demo.java
+
+Step 7 : execute 
+	$ java p1.p2.c1 
