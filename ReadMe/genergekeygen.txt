@@ -1,0 +1,4 @@
+$ssh-keygen
+
+id_rsa — this is your PRIVATE key. Don’t share this with anyone else. This is your secret.
+id_rsa.pub — this is your PUBLIC key. This contains no secrets. You can share it with others.
