@@ -37,3 +37,7 @@ startup                      // Run startup.bat to start tomcat server
 Step5: Setup setx JAVA_HOME C:\java\jdk1.8.0_60
 
 
+##Check java property
+$java -XshowSettings:properties -version
+
+
