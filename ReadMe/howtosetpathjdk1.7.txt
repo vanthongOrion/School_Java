@@ -20,3 +20,5 @@ The new path takes effect in each new command window you open after setting the 
 How to set encoding to utf 8
 
 goto edit environment variable >>  JAVA_TOOL_OPTIONS = -Dfile.encoding=UTF8
+
+お化け文字: setx JAVA_TOOL_OPTIONS -Dfile.encoding=Shift_JIS
