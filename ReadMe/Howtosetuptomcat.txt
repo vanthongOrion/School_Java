@@ -39,5 +39,9 @@ Step5: Setup setx JAVA_HOME C:\java\jdk1.8.0_60
 
 ##Check java property
 $java -XshowSettings:properties -version
+CLASSPATH=%JAVA_HOME%\bin;%CATALINA_HOME%\lib
+CATALINA_HOME=C:\tomcat\tomcat-10.0.27
+
+
 
 
