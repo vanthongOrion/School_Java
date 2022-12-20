@@ -14,8 +14,8 @@ public class MainGame {
 
 
 		while(winCheck()==0){
-			player1.play(player1);
-			player2.play(player1);
+			player1.play(player2.getOwnNum());
+			player2.play(player1.getOwnNum());
 		}
 
 		System.out.println(winCheck());
@@ -40,21 +40,6 @@ public class MainGame {
 			}
 		}
 		return 0;
-	}
-
-	public static HashMap<String,ArrayList<Integer>> checkWarning(Player player){
-		HashMap<String,ArrayList<Integer>> warningMap = new HashMap<String,ArrayList<Integer>>();
-		int num = player.getOwnNum();
-		for(String i: loadMap.get(num).keySet()){
-			ArrayList<Integer> values = new ArrayList<Integer>();
-			warningMap.put(i,values);
-			for(int j: loadMap.get(num).get(i).keySet()){
-				if(loadMap.get(num).get(i).get(j)==(len-1)){
-					warningMap.get(i).add(j);
-				}
-			}
-		}
-		return warningMap;
 	}
 
 }

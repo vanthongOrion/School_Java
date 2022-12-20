@@ -9,9 +9,9 @@ public class Map {
 		this.ownNum = ownNum;
 	}
 
-	private final static int[][] arr = MainGame.arr;
 
 	public HashMap<String,HashMap<Integer,Integer>> load(){
+		int[][] arr = MainGame.arr;
 	 	HashMap<String,HashMap<Integer,Integer>> map = new HashMap<String,HashMap<Integer,Integer>>();
 		map.put("row",new HashMap<Integer,Integer>());
 		map.put("column",new HashMap<Integer,Integer>());
