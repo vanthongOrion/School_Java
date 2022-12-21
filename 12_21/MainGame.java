@@ -4,8 +4,9 @@ import java.util.*;
 
 public class MainGame {
 	public final static int len = 5;
+	public final static int lenBoom = 3;
 	public final static int[][] arr = new int[len][len];
-	public final static Array<Integer> arrBoom = new Array<Integer>();
+	public final static int[][] arrBoom = new int[lenBoom][2];
 	public final static int boomKey = -1;
 
 	public static void main(String[] args){
@@ -53,7 +54,8 @@ public class MainGame {
 			x = ran.nextInt(len);
 			y = ran.nextInt(len);
 		}
-		arr[this.getX()][this.getY()] = boomKey; 
+		arr[x][y] = boomKey;
+		arrBoom.add() 
 	}
 
 }
