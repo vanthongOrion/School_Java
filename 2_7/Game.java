@@ -5,6 +5,8 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyAdapter;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 import javax.swing.JPanel;
 import javax.swing.JFrame;
@@ -47,23 +49,24 @@ public class Game extends JPanel {
 				}
 			}
 		});
+		addMouseListener(new MouseAdapter() {
+			public void mouseClicked(MouseEvent e) {
+				System.out.println("Clicked");
+			}
+		});
 
 	}
 
 	public void init() {
 		Random rnd = new Random();
-		int i = 1; 
-		while (i<(rows*cols)) {
+		for (int i=1; i < rows * cols; i++) {			
 			int x = rnd.nextInt(rows);
 			int y = rnd.nextInt(cols);
-			while (arr[x][y] != 0) {
-				x = rnd.nextInt(rows);
-				y = rnd.nextInt(cols);
-			}
-			if (!((x == blankX)&&(y == blankY))) {
+				while (arr[x][y] != 0 || (arr[x][y] == 0 && x == blankX && y == blankY)) {
+					x = rnd.nextInt(rows);
+					y = rnd.nextInt(cols);
+				}
 				arr[x][y] = i;
-				i++;
-			}	
 		}
 	}
 
@@ -144,5 +147,7 @@ public class Game extends JPanel {
 		frame.setContentPane(game);
 		frame.pack();
 		frame.setVisible(true);
+		frame.setLocationRelativeTo(null);
+		frame.setResizable(false);
 	}
 }
