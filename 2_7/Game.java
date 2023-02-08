@@ -12,11 +12,17 @@ import javax.swing.JPanel;
 import javax.swing.JFrame;
 
 public class Game extends JPanel {
+	private static final int CELL_WIDTH = 80;
+	private static final int CELL_HEIGHT = 80;
+	private static final int CELL_SIZE = 110;
+	private static final int CELL_GAP = 10;
+	private static final Color CELL_COLOR = new Color(102,51,0);
+	private static final Color BLANK_COLOR = new Color(153,102,0);
+
 	private int rows, cols;
 	private int[][] arr;
 	private int blankX; 
 	private int blankY; 
-	private final int CELL_SIZE = 110;
 
 	public Game(int rows, int cols) {
 		this.rows = rows;
@@ -30,20 +36,20 @@ public class Game extends JPanel {
 		addKeyListener(new KeyAdapter() {
 			public void keyPressed(KeyEvent e) {
 				switch (e.getKeyCode()) {
-				case 38 :
-				case 87 :
+				case KeyEvent.VK_UP :
+				case KeyEvent.VK_W :
 					moveSet('U');
 					break;
-				case 40 :
-				case 83 :
+				case KeyEvent.VK_DOWN :
+				case KeyEvent.VK_S :
 					moveSet('D');
 					break;
-				case 37 :
-				case 65 :
+				case KeyEvent.VK_LEFT :
+				case KeyEvent.VK_A :
 					moveSet('L');
 					break;
-				case 39 :
-				case 68 :
+				case KeyEvent.VK_RIGHT :
+				case KeyEvent.VK_D :
 					moveSet('R');
 					break;
 				}
@@ -51,7 +57,13 @@ public class Game extends JPanel {
 		});
 		addMouseListener(new MouseAdapter() {
 			public void mouseClicked(MouseEvent e) {
-				System.out.println("Clicked");
+				int pointX = e.getX();
+				int pointY = e.getY();
+				if (!isGapArea(pointX, pointY)) {
+					int col = (int) (pointX / CELL_SIZE);
+					int row = (int) (pointY / CELL_SIZE);
+					moveCheck(row, col);
+				}
 			}
 		});
 
@@ -72,25 +84,24 @@ public class Game extends JPanel {
 
 	public void paintComponent(Graphics g) {
 		super.paintComponent(g);
-		int width = 80;
-		int height = 80;
+		drawCell(g);
+	}
+
+	public void drawCell(Graphics g) {
 		for (int i=0; i < rows ; i++) {
-			int gap = 10;
 			for (int j=0; j< cols ; j++) {
-				int recX = gap + ( j * CELL_SIZE ); 
-				int recY = gap + ( i * CELL_SIZE );
-				g.setColor(new Color(102,51,0));
-				g.drawRect(recX,recY,width,height);
-				g.fillRect(recX+1,recY+1,width-1,height-1);
-				if ( arr[i][j] != 0 ) {
+				int recX = CELL_GAP + ( j * CELL_SIZE ); 
+				int recY = CELL_GAP + ( i * CELL_SIZE );
+				if (blankX == i && blankY == j) {
+					g.setColor(BLANK_COLOR);
+					g.fillRect(recX, recY, CELL_WIDTH, CELL_HEIGHT);
+				} else {
+					g.setColor(CELL_COLOR);
+					g.fillRect(recX, recY, CELL_WIDTH, CELL_HEIGHT);
 					String num = String.valueOf(arr[i][j]);
 					int stringX = (int) ((CELL_SIZE-10) - g.getFontMetrics().stringWidth(num)) / 2 + ( j *  CELL_SIZE);
 					int stringY = (int) ((CELL_SIZE-10) + g.getFontMetrics().getAscent()) / 2 + ( i * CELL_SIZE);
 					drawNum(num,g,stringX,stringY);
-				}
-				if ( arr[i][j] == 0) {
-					g.setColor(new Color(153,102,0));
-					g.fillRect(recX,recY,width,height);
 				}
 			}
 		}
@@ -100,6 +111,24 @@ public class Game extends JPanel {
 		g.setColor(Color.WHITE);
 		g.setFont(new Font("Arial", Font.BOLD, 30));
 		g.drawString(num,x,y);
+	}
+
+	public void moveCheck(int row, int col) {
+		if (row - 1 == blankX && col == blankY) {
+			moveSet('D');
+		}
+
+		if (row + 1 == blankX && col == blankY) {
+			moveSet('U');
+		}
+
+		if (row == blankX && col -1 == blankY) {
+			moveSet('R');
+		}
+
+		if (row == blankX && col + 1 == blankY) {
+			moveSet('L');
+		}
 	}
 
 	public void moveSet(char direc) {
@@ -139,11 +168,27 @@ public class Game extends JPanel {
 		}
 	} 
 
+	public boolean isGapArea(int pointX, int pointY) {
+		if (pointX < CELL_GAP || pointY < CELL_GAP) return true;
+		for (int i = 0; i<cols; i++){
+			if (pointX > (CELL_SIZE - CELL_GAP) * i && pointX < (CELL_SIZE + CELL_GAP) * i ) {
+				return true;
+			}
+		}
+
+		for (int j=0; j<rows; j++) {
+			if (pointY > (CELL_SIZE - CELL_GAP) * j && pointY < (CELL_SIZE + CELL_GAP) * j) {
+				return true;
+			}
+		}
+		return false;
+	}
+
 	public static void main(String[] args) {
 		JFrame frame = new JFrame("Puzzle Game");
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-		Game game = new Game(4,3);
+		Game game = new Game(5,4);
 		frame.setContentPane(game);
 		frame.pack();
 		frame.setVisible(true);
